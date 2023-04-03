@@ -1,0 +1,16 @@
+<%# expects an array of messages %>
+
+<div class=" ">
+    <div class="flex items-end">
+      <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+        <% messages[0...-1].each do |message| %>
+          <div><span class="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600"><%= message %></span></div>
+        <% end %>
+
+        <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+          <%= messages.last %>
+        </span></div>
+      </div>
+      <%= heroicon 'user-circle', variant: :outline, options: { class:'h-6 w-6 order-1 text-gray-400' } %>
+    </div>
+</div>

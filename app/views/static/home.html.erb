@@ -11,7 +11,7 @@
 
   <%= turbo_frame_tag 'chat_window' do %>
     <div class="fixed bottom-3 right-14 bg-white text-blue-500 flex-1 p:2 sm:p-6 justify-between flex flex-col ">
-      <%= button_to "Start or continue Chat", support_chats_path %>
+      <%= link_to "Start or continue Chat", new_support_chat_path %>
     </div>
   <% end %>
 </div>

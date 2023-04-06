@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'static/home'
-  resources :support_chats, only: [ :create, :show] do
+  resources :support_chats, only: [ :create, :show, :index, :new ] do
     resources :messages, only: [ :create, :show ]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

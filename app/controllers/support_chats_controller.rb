@@ -1,5 +1,4 @@
 class SupportChatsController < ApplicationController
-
   def create
     chat_id = session[:session_id]
 

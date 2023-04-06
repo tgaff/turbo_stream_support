@@ -19,4 +19,9 @@
 #
 class Message < ApplicationRecord
   belongs_to :support_chat
+
+  def is_mine?(state_obj)
+    session = state_obj.respond_to?(:session) ? state_obj.session : state_obj
+    user_id == session[:session_id]
+  end
 end

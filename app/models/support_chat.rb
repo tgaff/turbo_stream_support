@@ -11,6 +11,8 @@
 class SupportChat < ApplicationRecord
   has_many :messages
 
+  validates :user_id, presence: true
+
   def default_messages
     [
       { me: false, message: "Can be verified on any platform using docker"},

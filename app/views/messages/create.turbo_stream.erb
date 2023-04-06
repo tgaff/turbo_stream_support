@@ -1,0 +1,3 @@
+<%= turbo_stream.append 'messages' do %>
+  <%= render partial: 'support_chats/chat_messages_right', locals: { messages: [@message]} %>
+<% end %>

@@ -1,3 +1,6 @@
 <%= turbo_stream.append 'messages' do %>
   <%= render partial: 'support_chats/chat_messages_right', locals: { messages: [@message]} %>
 <% end %>
+<%= turbo_stream.replace dom_id(@support_chat, :message_form) do %>
+  <%= render partial: 'support_chats/message_form', locals: { chat: @support_chat } %>
+<% end %>

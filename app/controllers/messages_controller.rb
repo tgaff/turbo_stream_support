@@ -5,8 +5,15 @@ class MessagesController < ApplicationController
     @message = @support_chat.messages.create(message_params)
     respond_to do |format|
       # format.turbo_stream { render 'create' }  # TODO: finish later
-      format.html { redirect_to @support_chat }
+      # format.html { redirect_to @support_chat }
+      format.html { head :no_content }
     end
+
+    @message.broadcast_append_later_to(@support_chat, partial: 'support_chats/chat_messages_left',
+      locals: {
+        messages: [@message]
+      }
+    )
   end
 
   def show

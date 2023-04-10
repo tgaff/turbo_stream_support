@@ -67,4 +67,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  console do
+    # this block is called only when running console,
+    # so we can safely require pry here
+    require "pry"
+    config.console = Pry
+  end
 end

@@ -1,10 +1,4 @@
 <%= turbo_stream_from @chat %>
-<style>
-  /* hide websocket messages from myself */
-  .message-conditional-hide[data-message-sender='<%= session_id %>'] {
-    display: none;
-  }
-</style>
 
 <div class="fixed bottom-3 right-14 bg-white text-blue-500 flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
     <div class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
@@ -27,13 +21,33 @@
     <div id="messages" class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
 
       <% @chat.messages.each do |message| %>
-        <% if message.is_mine?(self) %>
-          <%= render partial: 'chat_messages_right', locals: { message: message } %>
-        <% else %>
-          <%= render partial: 'chat_messages_left', locals: { message: message } %>
-        <% end %>
+        <%= render partial: 'chat_message', locals: { message: message } %>
       <% end %>
 
     </div>
     <%= render partial: 'message_form', locals: { chat: @chat } %>
 </div>
+
+<style>
+  /* format MY messages differently overriding the default left side and gray */
+  div[data-message-sender='<%= session_id %>'] > div.if-mine-justify-end {
+    justify-content: end;
+  }
+
+  div[data-message-sender='<%= session_id %>'] div.if-mine-inner {
+    align-items: flex-end;
+    order: 1;
+  }
+
+  div[data-message-sender='<%= session_id %>'] div.if-mine-inner span {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0.5rem;
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+  }
+
+  div[data-message-sender='<%= session_id %>'] svg {
+    color: var(--color-blue-600);
+    order: 1;
+  }
+</style>

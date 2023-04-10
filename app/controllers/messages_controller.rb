@@ -10,7 +10,14 @@ class MessagesController < ApplicationController
     end
 
     # and enqueue broadcast to everyone (note includes the sender too!)
-    @message.broadcast_append_later_to(@support_chat, partial: 'support_chats/chat_messages_left',
+    @message.broadcast_append_later_to(@support_chat, partial: 'support_chats/chat_message',
+      locals: {
+        message: @message,
+      }
+    )
+
+    # and enqueue broadcast to everyone (note includes the sender too!)
+    @message.broadcast_append_later_to(@support_chat, partial: 'support_chats/chat_message',
       locals: {
         message: @message
       }

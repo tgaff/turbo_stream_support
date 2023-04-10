@@ -6,7 +6,11 @@
 #  user_name  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :string
+#  user_id    :integer
+#
+# Indexes
+#
+#  index_support_chats_on_user_id  (user_id)
 #
 class SupportChat < ApplicationRecord
   has_many :messages

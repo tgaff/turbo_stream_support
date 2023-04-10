@@ -1,13 +1,8 @@
 <div>
   <div class="flex items-end justify-end">
     <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-      <% messages[0...-1] do |message| %>
-        <div><span class="px-4 py-2 rounded-lg inline-block bg-blue-600 text-white">
-          <%= message.text %>
-        </span></div>
-      <% end  %>
       <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white">
-        <%= messages.last.text %>
+        <%= message.text %>
       </span></div>
     </div>
     <%= heroicon 'user-circle', variant: :mini, options: { class:'w-6 h-6 order-2 text-blue-500' } %>

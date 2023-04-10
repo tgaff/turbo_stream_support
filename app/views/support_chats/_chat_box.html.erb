@@ -28,9 +28,9 @@
 
       <% @chat.messages.each do |message| %>
         <% if message.is_mine?(self) %>
-          <%= render partial: 'chat_messages_right', locals: { messages: [message] } %>
+          <%= render partial: 'chat_messages_right', locals: { message: message } %>
         <% else %>
-          <%= render partial: 'chat_messages_left', locals: { messages: [message] } %>
+          <%= render partial: 'chat_messages_left', locals: { message: message } %>
         <% end %>
       <% end %>
 

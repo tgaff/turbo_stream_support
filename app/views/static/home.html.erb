@@ -1,10 +1,15 @@
 <div>
   <div class="h-64">
     <div class="p-4 m-4 bg-purple-600">
-      <h1 class="text-2xl font-bold text-white">Tailwind CSS Demo</h1>
+      <h1 class="text-2xl font-bold text-white">Wonderful Product Website</h1>
     </div>
     <div class="p-4 m-4 bg-purple-300 h-full">
-      <h2 class="text-green-900">Have much fun using Tailwind CSS</h2>
+      <h2>Technical Support</h2>
+      <% if Current.user.present? %>
+        <p class="mt-3">Welcome valued customer, <%= Current.user.name %>.</p>
+      <% else %>
+        <p class="mt-3">Head <%= link_to "over here", new_session_path %> to sign in</p>
+      <% end %>
     </div>
   </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_10_073620) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_050041) do
   create_table "messages", force: :cascade do |t|
     t.integer "support_chat_id", null: false
     t.string "text", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_073620) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "messages", "support_chats"

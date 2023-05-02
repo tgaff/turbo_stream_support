@@ -21,6 +21,5 @@
 class Message < ApplicationRecord
   belongs_to :support_chat
 
-  # validates :user, presence: true
   validates :text, :chatter_uuid, presence: true
 end

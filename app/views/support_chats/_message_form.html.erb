@@ -1,9 +1,9 @@
 <%= turbo_frame_tag dom_id(chat, :message_form) do %>
   <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-    <%= form_with model: [chat, chat.messages.build] do |f| %>
+    <%= form_with model: [chat, chat.messages.build], html: {autocomplete: 'off'} do |f| %>
 
       <div class="relative flex">
-        <%= f.text_field :text, placeholder: "Write your message!", class: "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600  bg-gray-200 rounded-md py-3" %>
+        <%= f.text_field :text, placeholder: "Write your message!", autofocus: true, class: "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600  bg-gray-200 rounded-md py-3" %>
         <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
 
           <%= button_tag type: :submit, class: "inline-flex items-center justify-center rounded-lg px-2 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none" do %>

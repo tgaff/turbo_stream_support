@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_19_050041) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_043808) do
   create_table "messages", force: :cascade do |t|
     t.integer "support_chat_id", null: false
     t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.string "chatter_uuid", null: false
+    t.index ["chatter_uuid"], name: "index_messages_on_chatter_uuid"
     t.index ["support_chat_id"], name: "index_messages_on_support_chat_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "support_chats", force: :cascade do |t|
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_050041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "chatter_uuid", null: false
     t.index ["user_id"], name: "index_support_chats_on_user_id"
   end
 

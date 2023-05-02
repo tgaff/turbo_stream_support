@@ -30,23 +30,23 @@
 
 <style>
   /* format MY messages differently overriding the default left side and gray */
-  div[data-message-sender='<%= session_id %>'] > div.if-mine-justify-end {
+  div[data-message-sender='<%= chatter_uuid %>'] > div.if-mine-justify-end {
     justify-content: end;
   }
 
-  div[data-message-sender='<%= session_id %>'] div.if-mine-inner {
+  div[data-message-sender='<%= chatter_uuid %>'] div.if-mine-inner {
     align-items: flex-end;
     order: 1;
   }
 
-  div[data-message-sender='<%= session_id %>'] div.if-mine-inner span {
+  div[data-message-sender='<%= chatter_uuid %>'] div.if-mine-inner span {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0.5rem;
     background-color: var(--color-blue-600);
     color: var(--color-white);
   }
 
-  div[data-message-sender='<%= session_id %>'] svg {
+  div[data-message-sender='<%= chatter_uuid %>'] svg {
     color: var(--color-blue-600);
     order: 1;
   }

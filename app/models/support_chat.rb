@@ -2,11 +2,12 @@
 #
 # Table name: support_chats
 #
-#  id         :integer          not null, primary key
-#  user_name  :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
+#  id           :integer          not null, primary key
+#  chatter_uuid :string           not null
+#  user_name    :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
 #
 # Indexes
 #
@@ -15,7 +16,27 @@
 class SupportChat < ApplicationRecord
   has_many :messages
 
-  validates :user_id, presence: true
+  validates :user_name, :chatter_uuid, presence: true
+
+  before_validation :set_chatter_uuid
+
+  def set_chatter_uuid
+    return if self.chatter_uuid.present?
+
+    self.chatter_uuid = self.class.new_chatter_uuid
+  end
+
+  def self.new_chatter_uuid
+    loops = 0
+    # cycle for 5 iteratinos to find a UUID for chatter_id
+    loop do
+      raise StandardError, "Couldn't gen chatter ID" if loops == 4
+      chatter_uuid = SecureRandom.uuid
+      return chatter_uuid unless self.where(chatter_uuid: chatter_uuid).exists?
+
+      loops+=1
+    end
+  end
 
   def default_messages
     [

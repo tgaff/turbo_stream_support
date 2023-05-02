@@ -3,16 +3,16 @@
 # Table name: messages
 #
 #  id              :integer          not null, primary key
+#  chatter_uuid    :string           not null
 #  text            :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  support_chat_id :integer          not null
-#  user_id         :integer
 #
 # Indexes
 #
+#  index_messages_on_chatter_uuid     (chatter_uuid)
 #  index_messages_on_support_chat_id  (support_chat_id)
-#  index_messages_on_user_id          (user_id)
 #
 # Foreign Keys
 #
@@ -21,6 +21,6 @@
 class Message < ApplicationRecord
   belongs_to :support_chat
 
-  validates :user, presence: true
-  validates :text, presence: true
+  # validates :user, presence: true
+  validates :text, :chatter_uuid, presence: true
 end

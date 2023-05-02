@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  include SupportChatsHelper
+
   before_action :set_support_chat
 
   def create
@@ -30,14 +32,10 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require('message').permit('text').merge({ user_id: session_id })
+    params.require('message').permit('text').merge({ chatter_uuid: chatter_uuid })
   end
 
   def set_support_chat
     @support_chat = SupportChat.find(params[:support_chat_id])
-  end
-
-  def session_id
-    session[:session_id]
   end
 end

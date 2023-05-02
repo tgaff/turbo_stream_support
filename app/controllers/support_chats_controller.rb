@@ -31,10 +31,6 @@ class SupportChatsController < ApplicationController
   end
 
   def index
-    unless Current.user.present?
-      return redirect_to new_session_path
-    end
-
     @support_chats = SupportChat.all.order(:updated_at)
   end
 

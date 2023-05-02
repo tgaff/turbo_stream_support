@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'chat_window' do %>
-  <div class="fixed bottom-3 right-14 bg-white text-blue-500 flex-1 p:2 sm:p-6 justify-between flex flex-col">
+  <div class="fixed bottom-3 right-14 bg-white text-blue-500 flex-1 justify-between flex flex-col">
     <div class="relative flex">
       <%= form_with model: @chat do |f| %>
         <%= f.text_field :user_name, placeholder: "What should we call you?", class: "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600  bg-gray-200 rounded-md py-3" %>

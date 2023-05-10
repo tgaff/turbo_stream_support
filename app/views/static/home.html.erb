@@ -9,6 +9,10 @@
     </div>
   </div>
 
-  <%= render partial: '/chat_box' %>
+  <%= turbo_frame_tag 'chat_window' do %>
+    <div class="fixed bottom-3 right-14 bg-purple-300 text-blue-500 flex-1 p:2 sm:p-6 justify-between flex flex-col rounded-lg hover:bg-white ">
+      <%= link_to "Start or continue Chat", new_support_chat_path %>
+    </div>
+  <% end %>
 
 </div>

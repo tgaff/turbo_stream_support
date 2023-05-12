@@ -8,5 +8,7 @@
 #  updated_at    :datetime         not null
 #
 class SupportChat < ApplicationRecord
+  has_many :messages
+
   validates :customer_name, presence: true
 end

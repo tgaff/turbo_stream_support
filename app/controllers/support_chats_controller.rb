@@ -12,6 +12,9 @@ class SupportChatsController < ApplicationController
 
   # GET /support_chats/new
   def new
+    if session[:current_support_chat_id].present?
+      return redirect_to support_chat_url(session[:current_support_chat_id])
+    end
     @support_chat = SupportChat.new
   end
 
@@ -25,6 +28,7 @@ class SupportChatsController < ApplicationController
 
     respond_to do |format|
       if @support_chat.save
+        session[:current_support_chat_id] = @support_chat.id
         format.html { redirect_to support_chat_url(@support_chat), notice: "Support chat was successfully created." }
         format.json { render :show, status: :created, location: @support_chat }
       else

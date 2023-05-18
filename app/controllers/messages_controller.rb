@@ -4,7 +4,8 @@ class MessagesController < ApplicationController
   def create
     @message = @support_chat.messages.create(message_params)
     respond_to do |format|
-      format.html { redirect_to @support_chat }
+      format.turbo_stream
+      # format.html { redirect_to @support_chat }
     end
   end
 

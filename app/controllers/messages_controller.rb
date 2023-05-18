@@ -4,8 +4,9 @@ class MessagesController < ApplicationController
   def create
     @message = @support_chat.messages.create(message_params)
     respond_to do |format|
-      format.turbo_stream
+      # format.turbo_stream
       # format.html { redirect_to @support_chat }
+      format.html { head :no_content }
     end
 
     @message.broadcast_append_later_to(@support_chat, partial: '/message_right',

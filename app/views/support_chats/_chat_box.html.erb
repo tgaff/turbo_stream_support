@@ -28,7 +28,7 @@
     <!-- new message input form -->
     <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
 
-      <%= form_with model: [@support_chat, @support_chat.messages.build] do |f| %>
+      <%= form_with model: [@support_chat, @support_chat.messages.build], data: { controller: 'form-reset', action: 'turbo:submit-end->form-reset#reset'} do |f| %>
         <div class="relative flex">
           <%= f.text_field :text, placeholder: "Write your message!", class: "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600  bg-gray-200 rounded-md py-3" %>
           <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">

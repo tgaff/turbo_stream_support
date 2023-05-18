@@ -7,6 +7,12 @@ class MessagesController < ApplicationController
       format.turbo_stream
       # format.html { redirect_to @support_chat }
     end
+
+    @message.broadcast_append_later_to(@support_chat, partial: '/message_right',
+      locals: {
+        text: @message.text,
+      }
+    )
   end
 
   private

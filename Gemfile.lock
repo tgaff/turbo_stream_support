@@ -176,6 +176,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.2-x86_64-darwin)
     sqlite3 (1.6.2-x86_64-linux)
+    stackprof (0.2.25)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.26-x86_64-darwin)
@@ -219,6 +220,7 @@ DEPENDENCIES
   sentry-ruby
   sprockets-rails
   sqlite3 (~> 1.4)
+  stackprof
   stimulus-rails
   tailwindcss-rails (~> 2.0)
   turbo-rails

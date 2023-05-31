@@ -10,4 +10,6 @@ Sentry.init do |config|
   config.traces_sampler = lambda do |context|
     true
   end
+
+  config.profiles_sample_rate = 1.0
 end

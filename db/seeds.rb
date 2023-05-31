@@ -26,6 +26,10 @@ messages = [
   { text: "You too.", side: :right }
 ]
 
+if SupportChat.all.count < 2
+  SupportChat.create(customer_name: "Dave")
+end
+
 SupportChat.all.each do |sc|
   # next if sc.messages.count > 10
 

@@ -33,7 +33,7 @@ end
 SupportChat.all.each do |sc|
   # next if sc.messages.count > 10
 
-  100.times do
+  50.times do
     messages.each do |m|
       sc.messages.create(text: m[:text])
     end

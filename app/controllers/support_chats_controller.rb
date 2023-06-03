@@ -3,6 +3,7 @@ class SupportChatsController < ApplicationController
 
   # GET /support_chats or /support_chats.json
   def index
+    @use_n_plus_1 = params.include?('n_plus_1')
     @support_chats = SupportChat.all
   end
 

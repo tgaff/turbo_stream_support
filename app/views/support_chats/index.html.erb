@@ -8,6 +8,11 @@
     <%= link_to 'New support chat', new_support_chat_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <div class="flex items-center">
+    <%= link_to "with N+1 issue", support_chats_path(n_plus_1: 'yes'), class: 'p-2 underline text-blue-600 hover:text-blue-800 visited:text-purple-600' %>
+    <%= link_to "without N+1 issue", support_chats_path, class: 'p-2 underline text-blue-600 hover:text-blue-800 visited:text-purple-600' %>
+  </div>
+
   <div id="support_chats" class="min-w-full">
     <%= render @support_chats %>
   </div>

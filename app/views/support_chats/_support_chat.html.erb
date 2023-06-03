@@ -7,6 +7,20 @@
   <% if action_name != "show" %>
     <%= link_to "Show this support chat", support_chat, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this support chat', edit_support_chat_path(support_chat), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <% if @use_n_plus_1 %>
+      <div>
+        <span>last message: </span>
+        <%= render partial: '/message_right', locals: { text: support_chat.messages.order(:created_at).last(3).first.text } %>
+        <%= render partial: '/message_right', locals: { text: support_chat.messages.order(:created_at).last(2).first.text } %>
+        <%= render partial: '/message_right', locals: { text: support_chat.messages.order(:created_at).last.text } %>
+        <!-- waste some time on sql  -->
+        <% support_chat.messages.limit(100).pluck(:id).each do |id| %>
+          <% Rails.logger.debug("Message reads: #{Message.find(id).text}") %>
+        <% end %>
+      </div>
+    <% end %>
+
     <hr class="mt-6">
   <% end %>
 </div>

@@ -8,7 +8,7 @@ class StaticController < ApplicationController
   private
 
   def fetch_api_data
-    ActiveSupport::Notifications.instrument('APIcall') do
+    ActiveSupport::Notifications.instrument('external-API-fetch') do
       List.trending
     end
   end

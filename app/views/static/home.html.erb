@@ -1,13 +1,22 @@
 <div>
-  <div class="h-64">
+  <div class="">
     <div class="p-4 m-4 bg-purple-600">
       <h1 class="text-2xl font-bold text-white">Wonderful Product Website</h1>
     </div>
-    <div class="p-4 m-4 bg-purple-300 h-full">
+    <div class="h-32 p-4 m-4 bg-purple-300 rounded-md">
       <h2 class="text-xl">Technical Support</h2>
-        <p class="mt-3">We welcome you valued customer.  To consult with an expert click the button.</p>
+      <p class="mt-3">We welcome you valued customer.  To consult with an expert click the button.</p>
+    </div>
+    <div class="p-4 m-4 bg-purple-300 rounded-md">
+      <h2 class="text-lg py-4">Trending now</h2>
+      <ul class="m-4">
+        <% @trending.each do |l| %>
+          <li class="text-sm list-none hover:list-disc"><%= l.title %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
+
 
   <%= turbo_frame_tag 'chat_window' do %>
     <div class="fixed bottom-3 right-14 bg-purple-300 text-blue-500 flex-1 p:2 sm:p-6 justify-between flex flex-col rounded-lg hover:bg-white ">

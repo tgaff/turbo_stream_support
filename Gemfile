@@ -52,6 +52,8 @@ gem "bootsnap", require: false
 gem "tailwindcss-rails", "~> 2.0"
 gem "heroicon"
 
+gem "graphql"
+
 gem 'stackprof'
 gem "sentry-ruby"
 gem "sentry-rails"
@@ -78,3 +80,4 @@ end
 
 
 
+gem "graphiql-rails", group: :development

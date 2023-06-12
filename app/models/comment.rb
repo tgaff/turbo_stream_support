@@ -6,7 +6,7 @@
 #  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  parent_id  :integer          not null
+#  parent_id  :integer
 #  post_id    :integer          not null
 #
 # Indexes
@@ -21,5 +21,6 @@
 #
 class Comment < ApplicationRecord
   belongs_to :post
-  belongs_to :parent
+  belongs_to :parent, optional: true, class_name: 'Comment'
+  has_many :responses, class_name: 'Comment', foreign_key: 'parent_id'
 end

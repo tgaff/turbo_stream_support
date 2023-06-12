@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_103041) do
   create_table "comments", force: :cascade do |t|
     t.text "text"
     t.integer "post_id", null: false
-    t.integer "parent_id", null: false
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_comments_on_parent_id"

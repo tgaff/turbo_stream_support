@@ -26,19 +26,27 @@ messages = [
   { text: "You too.", side: :right }
 ]
 
-if SupportChat.all.count < 2
-  SupportChat.create(customer_name: "Dave")
-end
+# if SupportChat.all.count < 2
+#   SupportChat.create(customer_name: "Dave")
+# end
 
-SupportChat.all.each do |sc|
-  # next if sc.messages.count > 10
+# SupportChat.all.each do |sc|
+#   # next if sc.messages.count > 10
 
-  50.times do
-    messages.each do |m|
-      sc.messages.create(text: m[:text])
-    end
-  end
+#   50.times do
+#     messages.each do |m|
+#       sc.messages.create(text: m[:text])
+#     end
+#   end
 
-  sc.reload
-  puts "SC with ID #{sc.id} has #{sc.messages.count} messages"
-end
+#   sc.reload
+#   puts "SC with ID #{sc.id} has #{sc.messages.count} messages"
+# end
+
+
+author = Author.find_or_create_by(name: "Dave")
+p = Post.find_or_create_by(title: "Hello World", body: "Hello World", author: author)
+c = p.comments.create(text: messages.sample.fetch(:text))
+p.comments.create(text: messages.sample.fetch(:text), parent: c)
+p.comments.create(text: messages.sample.fetch(:text), parent: c)
+p.comments.create(text: messages.sample.fetch(:text), parent: c)

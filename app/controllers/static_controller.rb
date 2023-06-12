@@ -1,4 +1,6 @@
 class StaticController < ApplicationController
+  before_action :foo
+
   def home
     FakeJob.perform_later({a: 1})
 
@@ -11,5 +13,9 @@ class StaticController < ApplicationController
     ActiveSupport::Notifications.instrument('external-API-fetch') do
       List.trending
     end
+  end
+
+  def foo
+    sleep 0.01
   end
 end
